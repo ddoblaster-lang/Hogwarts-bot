@@ -2,15 +2,13 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 import json
-import os
 from typing import Dict
 import random
-import json
-import os
 # ==============================
 # HOGWARTS BOT CONFIG
 # ==============================
-TOKEN = "MTQ5NDA2NjczNDUxOTI5MTk0NA.GigX1q.JAmjplGJPkNWm1IC_KHlI7MoZn2anh3PFAKu3U"
+import os
+TOKEN = os.getenv("TOKEN")
 GUILD_ID = 0  # Optional: put your server ID here to sync commands faster while testing
 
 HOUSE_ROLES = {
@@ -237,6 +235,4 @@ async def sortme(interaction: discord.Interaction):
     except Exception as e:
         await interaction.followup.send(f"Error: {e}", ephemeral=True)
 if __name__ == "__main__":
-    if TOKEN == "PASTE_YOUR_BOT_TOKEN_HERE":
-        raise RuntimeError("Paste your bot token into the TOKEN variable first.")
     bot.run(TOKEN)
